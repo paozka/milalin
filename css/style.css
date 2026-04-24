@@ -1,0 +1,688 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: linear-gradient(145deg, #f0f7ff 0%, #ffffff 100%);
+    color: #0a2b4e;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+ul, li {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 8px 20px rgba(0, 30, 60, 0.05);
+    position: sticky;
+    top: 0px;
+    z-index: 100;
+    border-bottom: 1px solid rgba(0, 112, 243, 0.15);
+}
+
+.mainHead {
+    max-width: 1400px;
+    margin: 0px auto;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logoImg img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    filter: drop-shadow(0px 2px 6px rgba(0, 80, 200, 0.2));
+}
+
+.logoTxt h1 {
+    font-size: 28.8px;
+    background: linear-gradient(135deg, #0f2b4d, #1a6eff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: baseline;
+}
+
+.nav > div {
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.nav h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e3a8a;
+    border-bottom: 2px solid transparent;
+    transition: 0.2s;
+    padding-bottom: 4px;
+}
+
+.nav h3:hover {
+    border-bottom-color: #1a6eff;
+    color: #0f52ba;
+}
+
+.nav ul {
+    position: absolute;
+    top: 130%;
+    left: 0px;
+    background: white;
+    min-width: 200px;
+    border-radius: 20px;
+    box-shadow: 0px 20px 35px -12px rgba(0, 0, 0, 0.1);
+    padding: 12.8px 0px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: 0.2s ease;
+    z-index: 50;
+    border: 1px solid rgba(0, 112, 243, 0.2);
+    backdrop-filter: blur(4px);
+}
+
+.nav > div:hover ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+}
+
+.nav ul li {
+    padding: 8px 19.2px;
+    font-size: 14.4px;
+    color: #1e293b;
+    transition: 0.1s;
+}
+
+.nav ul li:hover {
+    background: #eef4ff;
+    color: #1a6eff;
+    font-weight: 500;
+}
+
+.mainBody {
+    max-width: 1400px;
+    margin: 0px auto;
+    padding: 32px 32px 48px;
+}
+
+.abMeInf {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    margin-bottom: 80px;
+}
+
+.abMeInf > div {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(2px);
+    border-radius: 32px;
+    padding: 28.8px;
+    box-shadow: 0px 15px 35px -12px rgba(0, 50, 100, 0.08);
+    transition: all 0.3s;
+    border: 1px solid rgba(26, 110, 255, 0.2);
+}
+
+.abMeInf > div:hover {
+    transform: translateY(-6px);
+    border-color: rgba(26, 110, 255, 0.5);
+    box-shadow: 0px 25px 40px -14px rgba(26, 110, 255, 0.2);
+}
+
+.abMeh2 h2 {
+    font-size: 27.2px;
+    background: linear-gradient(120deg, #0a2b4e, #2b6ef0);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 16px;
+    border-left: 5px solid #1a6eff;
+    padding-left: 16px;
+}
+
+.content p {
+    line-height: 1.5;
+    color: #1e2f44;
+    font-weight: 400;
+}
+
+.myWorksInf {
+    background: linear-gradient(135deg, #eef2ff, #ffffff);
+    border-radius: 40px;
+    padding: 32px;
+    margin: 48px 0px;
+    text-align: center;
+    border: 1px solid #cbdffc;
+    box-shadow: 0px 12px 25px -10px rgba(0, 0, 0, 0.05);
+}
+
+.myWorksInf::before {
+    content: "Мои работы (портфолио)";
+    font-size: 32px;
+    font-weight: 700;
+    display: block;
+    color: #1e3a8a;
+    margin-bottom: 16px;
+}
+
+.myWorksInf::after {
+    content: "Монтаж Reels | Vlog | Коммерция | Креатив";
+    display: block;
+    font-size: 17.6px;
+    color: #2c5282;
+    letter-spacing: -0.2px;
+}
+
+.priceInf {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: 64px 0px;
+}
+
+.priceLong ul, .priceShort ul, .priceProcessing ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: flex-start;
+}
+
+.priceLong li, .priceShort li, .priceProcessing li {
+    background: white;
+    border-radius: 60px;
+    padding: 11.2px 22.4px;
+    font-weight: 500;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.02);
+    border: 1px solid #d9e9ff;
+    color: #0f2b4d;
+    transition: 0.2s;
+}
+
+.priceLong li:hover, .priceShort li:hover, .priceProcessing li:hover {
+    background: #eef4ff;
+    border-color: #1a6eff;
+    transform: scale(1.02);
+}
+
+.rate {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+    margin-top: 32px;
+}
+
+.rate > div {
+    background: #ffffffdd;
+    backdrop-filter: blur(4px);
+    border-radius: 32px;
+    padding: 28.8px;
+    transition: all 0.25s;
+    border: 1px solid #cde3ff;
+    box-shadow: 0px 12px 24px -16px rgba(0, 0, 0, 0.1);
+}
+
+.rate > div:hover {
+    transform: scale(1.02);
+    border-color: #2b6ef0;
+    background: white;
+}
+
+.rate h2 {
+    font-size: 30.4px;
+    text-transform: uppercase;
+    background: linear-gradient(125deg, #1e3a8a, #3b82f6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 19.2px;
+    letter-spacing: -0.5px;
+}
+
+.rate ul li {
+    margin-bottom: 12px;
+    font-size: 14.4px;
+    padding-left: 24px;
+    position: relative;
+    line-height: 1.4;
+}
+
+.rate ul li::before {
+    content: "▹";
+    position: absolute;
+    left: 0px;
+    color: #1a6eff;
+    font-weight: bold;
+}
+
+.reviewInf {
+    background: #f8fcff;
+    border-radius: 32px;
+    padding: 32px;
+    text-align: center;
+    margin-top: 48px;
+    border: 1px dashed #3b82f6;
+}
+
+.reviewInf h3 {
+    font-size: 28.8px;
+    color: #0f2b4d;
+}
+
+.mainFooter {
+    background: #0a2540;
+    margin-top: 48px;
+    padding: 32px;
+    border-radius: 32px 32px 0px 0px;
+    text-align: center;
+    color: white;
+}
+
+.footerImgs {
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+.links{
+    padding: 20px;
+    display: flex;
+    justify-content: center ;
+    
+}
+.links a {
+    margin: 20px;
+}
+
+.footerImgs::before {
+    content: "Milalin — твой личный видеомонтажер";
+    letter-spacing: 0.3px;
+}
+
+#reviewSlider {
+    margin-top: 16px;
+    font-style: italic;
+    background: #ffffffaa;
+    border-radius: 28px;
+    padding: 16px;
+}
+
+#nextReviewBtn {
+    background: #1a6eff;
+    border: none;
+    color: white;
+    padding: 8px 22.4px;
+    border-radius: 40px;
+    margin-top: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+#nextReviewBtn:hover {
+    background: #0f52ba;
+    transform: scale(1.02);
+}
+
+.mainFooter {
+    margin-top: 8px;
+    font-size: 12.8px;
+}
+
+@media (max-width: 780px) {
+    .mainHead {
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav {
+        justify-content: center;
+        gap: 16px;
+    }
+    .abMeInf {
+        grid-template-columns: 1fr;
+    }
+    .rate {
+        grid-template-columns: 1fr;
+    }
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: #1a6eff;
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 8px 20px rgba(26, 110, 255, 0.3);
+    transition: 0.2s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 99;
+    border: none;
+    font-size: 22.4px;
+}
+
+.scroll-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: #0f52ba;
+    transform: translateY(-3px);
+}
+
+.myCocial h3 {
+    cursor: pointer;
+}
+
+
+.reviewsGallery {
+    position: relative;
+    max-width: 500px;
+    margin: 24px auto 0px;
+    min-height: 400px;
+}
+
+.reviewCard {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.reviewCard.active {
+    display: block;
+}
+
+.reviewCard img {
+    width: 100%;
+    max-width: 450px;
+    margin: 0px auto;
+    border-radius: 24px;
+    box-shadow: 0px 12px 28px rgba(0, 0, 0, 0.12);
+    background: white;
+    object-fit: contain;
+}
+
+.reviewAuthor {
+    text-align: center;
+    margin-top: 16px;
+    font-weight: 500;
+    color: #1e3a8a;
+    font-size: 14px;
+}
+
+.galleryControls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.galleryBtn {
+    background: #1a6eff;
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+    font-size: 14px;
+}
+
+.galleryBtn:hover {
+    background: #0f52ba;
+    transform: scale(1.02);
+}
+
+.galleryDots {
+    display: flex;
+    gap: 12px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.dot.active {
+    background: #1a6eff;
+    width: 24px;
+    border-radius: 10px;
+}
+
+.dot:hover {
+    background: #3b82f6;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@media (max-width: 580px) {
+    .reviewCard img {
+        max-width: 100%;
+    }
+    .reviewsGallery {
+        max-width: 100%;
+    }
+}
+.page-order {
+    background: #faf8f5;
+}
+
+.order-page {
+    padding: 60px 20px;
+}
+
+.order-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+.order-title {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 12px;
+    color: #1a1a2e;
+}
+
+.order-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+.order-form .form-group {
+    margin-bottom: 28px;
+}
+
+.order-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1a1a2e;
+    font-size: 15px;
+}
+
+.order-form .required {
+    color: #e74c3c;
+}
+
+.order-form select,
+.order-form input,
+.order-form textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e8e8e8;
+    border-radius: 12px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    background: white;
+}
+
+.order-form select:focus,
+.order-form input:focus,
+.order-form textarea:focus {
+    outline: none;
+    border-color: #a0badc;
+    box-shadow: 0 0 0 3px rgba(161, 160, 220, 0.1);
+}
+
+.order-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.order-form small {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #999;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #898fe7 0%, #2e1f86 100%);
+    color: white;
+    border: none;
+    border-radius: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(201,160,220,0.3);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    transform: none;
+}
+
+.form-status {
+    margin-top: 20px;
+    padding: 14px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.form-status.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-status.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@media (max-width: 768px) {
+    .order-container {
+        padding: 24px;
+        margin: 0 16px;
+    }
+    
+    .order-title {
+        font-size: 24px;
+    }
+    
+    .checkbox-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .submit-btn {
+        padding: 14px;
+        font-size: 16px;
+    }
+}

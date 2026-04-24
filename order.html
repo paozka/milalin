@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заказать монтаж</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-order">
+    <header>
+        <div class="mainHead">
+            <div class="logo">
+                <div class="logoImg">
+                    <img src="css/img/лого.png" alt="Milalin logo">
+                </div>
+                <div class="logoTxt">
+                    <h1>Milalin</h1>
+                </div>
+            </div>  
+            <div class="nav">
+                <div class="abMe">
+                    <h3>немного обо мне</h3>
+                    <ul>
+                        <li>обо мне</li>
+                        <li>ведение соц. сетей</li>
+                        <li>монтаж рилсов</li>
+                        <li>монтаж длинных видео</li>
+                    </ul>
+                </div>
+                <div class="myWorks">
+                    <h3>мои работы</h3>
+                </div>
+                <div class="price">
+                    <h3>прайс лист</h3>
+                    <ul>
+                        <li>длинные видео</li>
+                        <li>короткие видео</li>
+                        <li>наложение субтитров и обрезка</li>
+                        <li>тарифы</li>
+                    </ul>
+                </div>
+                <div class="review">
+                    <h3>отзывы</h3>
+                </div>
+                <div class="order">
+                    <a href="index.html">на главную</a>
+                </div>
+                <div class="myCocial">
+                    <h3>связь с креатором</h3>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="mainBody order-page">
+        <div class="order-container">
+            <h1 class="order-title">Заказать монтаж</h1>
+            <p class="order-subtitle">Заполните форму — и Полина свяжется с вами в Telegram</p>
+
+            <form id="orderForm" class="order-form" action="https://formsubmit.co/reidoslav@mail.ru" method="POST">
+
+                <input type="hidden" name="_subject" value="Новая заявка на монтаж!">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://сайт.ru/spasibo.html">
+
+                <div class="form-group">
+                    <label>Что нужно смонтировать? <span class="required"></span></label>
+                    <select name="Тип услуги" id="serviceType" required>
+                        <option value="">Выберите тип видео</option>
+                        <option value="Reels / Shorts / TikTok">Reels / Shorts / TikTok (от 400₽)</option>
+                        <option value="YouTube видео / влог">YouTube видео / влог (от 900₽)</option>
+                        <option value="Корпоративный ролик">Корпоративный ролик (от 1000₽)</option>
+                        <option value="Индивидуальный ролик">Индивидуальный ролик</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Хронометраж видео <span class="required">*</span></label>
+                    <select name="Хронометраж" id="duration" required>
+                        <option value="">Выберите длительность</option>
+                        <option value="до 1 минуты">до 1 минуты</option>
+                        <option value="1-3 минуты">1-3 минуты</option>
+                        <option value="3-10 минут">3-10 минут</option>
+                        <option value="больше 10 минут">больше 10 минут</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Ссылка на примеры </label>
+                    <input type="url" name="Ссылка на файлы" id="fileLink" placeholder="https://www.youtube.com/watch...">
+                    <small>Возьмите ссылку на любое видео и вставьте сюда.</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Дополнительные услуги</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="Доп услуги[]" value="обрезка (300₽)">  обрезать видео в нужных моментах (обрезка ненужных кадров) +эффекты соединения кадров (300₽)</label>
+                        <label><input type="checkbox" name="Доп услуги[]" value="наложение музыки (300₽)"> наложение музыки и озвучки на видео (300₽)</label>
+                        <label><input type="checkbox" name="Доп услуги[]" value="наложение субтитров (300₽)"> наложение субтитров на видео (от 300₽)</label>
+                        <label><input type="checkbox" name="Доп услуги[]" value="улучшение качества (100₽)"> улучшение качества на видео (100₽)</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Ссылка на исходники <span class="required">*</span></label>
+                    <input type="url" name="Ссылка на файлы" id="fileLink" placeholder="https://disk.yandex.ru/..." required>
+                    <small>Загрузите видео в облако и вставьте ссылку сюда</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Пожелания к видео <span class="required">*</span></label>
+                    <textarea name="Комментарий" id="comment" rows="4" placeholder="Опишите что вы бы хотели видеть в итоге." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Telegram для связи <span class="required">*</span></label>
+                    <input type="text" name="Telegram клиента" id="contact" placeholder="@username или +7..." required>
+                    <small>Я свяжусь с вами в Telegram</small>
+                </div>
+
+                <button type="submit" class="submit-btn">Отправить заявку</button>
+            </form>
+
+            <div id="formStatus" class="form-status"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="mainFooter">
+            <div class="footerImgs">
+                <p>мои социальные сети</p>
+                <div class="links">
+                    <a href="https://vk.ru/videng_poli"><img src="css/img/вк.svg" alt=""></a>
+                    <a href="https://t.me/videng_Poli"><img src="css/img/телеграм.svg" alt=""></a>
+                    <a href="https://www.tiktok.com/@linochka.mi?_t=ZS-8zkeqU28EJF&_r=1"><img src="css/img/тик ток.svg" alt=""></a>
+                    <a href="https://www.youtube.com/@linochka_mi"><img src="css/img/ютуб.svg" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-top" id="scrollTopBtn">↑</div>
+
+    <script src="js/index.js"></script>
+    <script src="js/order.js"></script>
+</body>
+</html>
