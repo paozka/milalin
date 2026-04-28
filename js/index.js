@@ -99,14 +99,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
-    
-    const worksBlock = document.querySelector('.myWorksInf');
-    if (worksBlock) {
-        worksBlock.style.cursor = 'pointer';
-        worksBlock.addEventListener('click', () => {
-            alert("Портфолио: более 50+ успешных проектов. Reels для блогеров, монтаж лонгридов, анимация. Напишите мне — покажу примеры работ!");
-        });
-    }
 
     const socialDiv = document.querySelector('.myCocial');
     if (socialDiv) {
@@ -115,3 +107,112 @@
         });
     }
 })();
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.getElementById('videoTrack');
+    const prevBtn = document.getElementById('prevVideo');
+    const nextBtn = document.getElementById('nextVideo');
+    const dotsContainer = document.getElementById('videoDots');
+    
+    if (!track || !prevBtn || !nextBtn) return;
+    
+    const slides = Array.from(track.children);
+    const slideCount = slides.length;
+    let currentIndex = 0;
+    
+    // Позиция слайда в процентах
+    function updateCarousel() {
+        const slideWidth = 600 / slideCount;
+        track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+        
+        // Обновляем активную точку
+        document.querySelectorAll('.dot').forEach((dot, i) => {
+            if (i === currentIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+    
+    // Создаём точки
+    function createDots() {
+        dotsContainer.innerHTML = '';
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === currentIndex) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarousel();
+            });
+            dotsContainer.appendChild(dot);
+        });
+    }
+    
+    // Следующий слайд
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateCarousel();
+    }
+    
+    // Предыдущий слайд
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateCarousel();
+    }
+    
+    // Обработчики кнопок
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    
+    // Стрелки клавиатуры
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+        }
+    });
+    
+    // Инициализация
+    createDots();
+    
+    // Останавливаем видео при переключении (чтобы не играло фоном)
+    function stopAllVideos() {
+        slides.forEach(slide => {
+            const video = slide.querySelector('video');
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+            }
+        });
+    }
+    
+    // Останавливаем видео при переключении
+    const originalUpdate = updateCarousel;
+    window.updateCarousel = function() {
+        stopAllVideos();
+        originalUpdate();
+    };
+    updateCarousel = function() {
+        stopAllVideos();
+        originalUpdate();
+    };
+    
+    // Переопределяем
+    updateCarousel = function() {
+        stopAllVideos();
+        const slideWidth = 600 / slideCount;
+        track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+        document.querySelectorAll('.dot').forEach((dot, i) => {
+            if (i === currentIndex) dot.classList.add('active');
+            else dot.classList.remove('active');
+        });
+    };
+    
+    // Заменяем функцию
+    window.updateCarousel = updateCarousel;
+    updateCarousel();
+});
