@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Видеомонтажер</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <header>
-        <div class="mainHead">
-            <div class="logo">
-                <div class="logoImg">
-                    <img src="css/img/лого.png" alt="Milalin logo">
-                </div>* {
+* {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
