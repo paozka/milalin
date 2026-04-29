@@ -121,12 +121,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const slideCount = slides.length;
     let currentIndex = 0;
     
-    // Позиция слайда в процентах
     function updateCarousel() {
         const slideWidth = 600 / slideCount;
         track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
         
-        // Обновляем активную точку
         document.querySelectorAll('.dot').forEach((dot, i) => {
             if (i === currentIndex) {
                 dot.classList.add('active');
@@ -136,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Создаём точки
     function createDots() {
         dotsContainer.innerHTML = '';
         slides.forEach((_, index) => {
@@ -151,23 +148,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Следующий слайд
     function nextSlide() {
         currentIndex = (currentIndex + 1) % slideCount;
         updateCarousel();
     }
     
-    // Предыдущий слайд
     function prevSlide() {
         currentIndex = (currentIndex - 1 + slideCount) % slideCount;
         updateCarousel();
     }
     
-    // Обработчики кнопок
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
     
-    // Стрелки клавиатуры
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') {
             prevSlide();
@@ -176,10 +169,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Инициализация
     createDots();
     
-    // Останавливаем видео при переключении (чтобы не играло фоном)
     function stopAllVideos() {
         slides.forEach(slide => {
             const video = slide.querySelector('video');
@@ -189,8 +180,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    // Останавливаем видео при переключении
     const originalUpdate = updateCarousel;
     window.updateCarousel = function() {
         stopAllVideos();
@@ -201,7 +190,6 @@ document.addEventListener('DOMContentLoaded', function() {
         originalUpdate();
     };
     
-    // Переопределяем
     updateCarousel = function() {
         stopAllVideos();
         const slideWidth = 600 / slideCount;
@@ -212,7 +200,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
     
-    // Заменяем функцию
     window.updateCarousel = updateCarousel;
     updateCarousel();
+});
+const musicToggle = document.getElementById('musicToggleBtn');
+let audio = null;
+let isPlaying = false;
+
+musicToggle.addEventListener('click', () => {
+    if (!audio) {
+        audio = new Audio("/css/music/Alessia Cara - Here.mp3");
+        audio.loop = true;
+        audio.volume = 0.03;
+    }
+    
+    if (isPlaying) {
+        audio.pause();
+        musicToggle.innerHTML = 'Включить фон';
+    } else {
+        audio.play();
+        musicToggle.innerHTML = 'Выключить фон';
+    }
+    isPlaying = !isPlaying;
 });
