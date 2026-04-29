@@ -121,10 +121,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const slideCount = slides.length;
     let currentIndex = 0;
     
+    // Позиция слайда в процентах
     function updateCarousel() {
         const slideWidth = 600 / slideCount;
         track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
         
+        // Обновляем активную точку
         document.querySelectorAll('.dot').forEach((dot, i) => {
             if (i === currentIndex) {
                 dot.classList.add('active');
@@ -134,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Создаём точки
     function createDots() {
         dotsContainer.innerHTML = '';
         slides.forEach((_, index) => {
@@ -148,19 +151,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Следующий слайд
     function nextSlide() {
         currentIndex = (currentIndex + 1) % slideCount;
         updateCarousel();
     }
     
+    // Предыдущий слайд
     function prevSlide() {
         currentIndex = (currentIndex - 1 + slideCount) % slideCount;
         updateCarousel();
     }
     
+    // Обработчики кнопок
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
     
+    // Стрелки клавиатуры
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') {
             prevSlide();
@@ -190,6 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
         originalUpdate();
     };
     
+    // Переопределяем
     updateCarousel = function() {
         stopAllVideos();
         const slideWidth = 600 / slideCount;
