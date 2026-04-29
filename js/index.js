@@ -219,7 +219,7 @@ musicToggle.addEventListener('click', () => {
     if (!audio) {
         audio = new Audio("/css/music/Alessia Cara - Here.mp3");
         audio.loop = true;
-        audio.volume = 0.2;
+        audio.volume = 0.03;
     }
     
     if (isPlaying) {
