@@ -217,9 +217,9 @@ let isPlaying = false;
 
 musicToggle.addEventListener('click', () => {
     if (!audio) {
-        audio = new Audio("/css/music/Alessia Cara - Here.mp3");
+        audio = new Audio("/css/music/AlessiaCara-Here.mp3");
         audio.loop = true;
-        audio.volume = 0.3;
+        audio.volume = 1;
     }
     
     if (isPlaying) {
